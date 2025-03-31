@@ -1,4 +1,4 @@
-# Creative Commons and Usage Rights for The City After Dark: Interactive Study of 24-hour London
+# Creative Commons and Usage Rights for "The City After Dark: Interactive Study of 24-hour London"
 
 License: Creative Commons Attribution-NonCommercial-NoDerivatives (CC BY-NC-ND)
 
