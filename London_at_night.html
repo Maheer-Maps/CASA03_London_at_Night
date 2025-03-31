@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>London at Night</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v3.3.0/mapbox-gl.css" rel="stylesheet" />
+    
+    <!-- ECharts library -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.0/dist/echarts.min.js"></script>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+
+      #sidebar {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 400px;
+        background: #000f2a;
+        padding: 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        z-index: 2;
+        border: 2px solid white;
+      }
+
+      #title {
+        font-size: 30px;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+        color: #f3c847;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      #subtitle {
+        font-size: 14px;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+        color:#f3c847 ;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      #description {
+        font-family: 'Montserrat';
+        color: white;
+        font-size: 10px;
+      }
+
+      /* Key Section Styling - Fixed to Bottom */
+      #key {
+        position: fixed;
+        bottom: 5px;
+        right: 50px;
+        height: 17px;
+        width: 60%;
+        background: rgba(0, 15, 42, 0.9); /* Dark semi-transparent */
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        border-radius: 5px;
+        border: 2px solid white;
+      }
+
+      /* Center and Space Out Items */
+      .key-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+        max-width: 900px;
+      }
+
+      /* Individual Key Items */
+      .key-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 300;
+        color: white;
+        font-size: 12px;
+      }
+
+      /* Icon Size */
+      .key-icon {
+        width: 25px;
+        height: 25px;
+      }
+
+      /* Chart container styling */
+      #chart-container {
+        position: absolute;
+        bottom: 340px;
+        left: 14px;
+        width: 400px;
+        height: 150px;
+        background: #000f2a;
+        padding: 15px;
+        border-radius: 5px;
+        border: 2px solid white;
+      }
+
+      .echarts-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 12px;
+        color: white;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .echarts-text {
+        color: #D3D3D3;
+      }
+
+      #graph-container {
+        position: absolute;
+        bottom: 10px; /* Adjusted for more height */
+        left: 14px;
+        width: 400px; /* Slightly wider */
+        height: 280px; /* Increased height */
+        background: #000f2a;
+        padding: 15px;
+        border-radius: 5px;
+        border: 2px solid white;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <div id="title">LONDON AT NIGHT</div>
+      <div id="subtitle">A 24-Hour City or Just a Late-Night Illusion?</div>
+      <p id="description">
+        In 2018, The London Night-Time Commission’s Data and Research Group developed a Night-Time classification that informed the 2024 report London at Night: An Updated Evidence Base for a 24-Hour City. While the report explored key topics such as spend share, night workers, nighttime visitors, and late-night travel, it overlooked active 24-hour sites and their evolution over time. Additionally, as the GLA defines “night” as the hours between 6 PM and 6 AM, the study failed to capture truly round-the-clock assets and trends. This site seeks to illuminate these overlooked aspects of London's 24-hour ecosystem—because in a city that never sleeps, we can’t afford to leave parts of the night in the dark.      </p>
+    </div>
+
+    <!-- Map -->
+    <div id="map"></div>
+    
+    <!-- Chart Container for Stacked Line Chart -->
+    <!-- Stacked Bar Chart Container -->
+  <div id="chart-container"></div>  <!-- Existing chart -->
+
+<!-- New Stacked Bar Chart Container -->
+  <div id="graph-container"></div>  <!-- New chart with a unique ID -->
+
+    <!-- Key Section - Moved outside of Sidebar -->
+    <div id="key">
+      <div class="key-grid">
+        <div class="key-item">
+          <img src="Transport.png" alt="Icon 1" class="key-icon">
+          <span>Transport</span>
+        </div>
+        <div class="key-item">
+          <img src="Medical.png" alt="Icon 2" class="key-icon">
+          <span>Medical</span>
+        </div>
+        <div class="key-item">
+          <img src="Drink.png" alt="Icon 3" class="key-icon">
+          <span>Drinking</span>
+        </div>
+        <div class="key-item">
+          <img src="Entertain.png" alt="Icon 4" class="key-icon">
+          <span>Entertainment</span>
+        </div>
+        <div class="key-item">
+          <img src="Shop.png" alt="Icon 5" class="key-icon">
+          <span>Shopping</span>
+        </div>
+        <div class="key-item">
+          <img src="Other.png" alt="Icon 6" class="key-icon">
+          <span>Other</span>
+        </div>
+        <div class="key-item">
+          <img src="Unknown.png" alt="Icon 7" class="key-icon">
+          <span>Unknown</span>
+        </div>
+      </div>
+    </div>
+
+    <script src="map.js"></script> <!-- External JavaScript file for map.js -->
+    <script src="Stacked_line.js"></script> <!-- External Stacked Line Chart file -->
+<!-- Stacked Bar Chart Container -->
+    <script src="chart.js"></script>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoibWFoZWVyLW1hcHMiLCJhIjoiY201eTQ1Y3o4MGEzazJqcjJzY2N5Y3N3eSJ9.46hoKifS-rGSZ_8px3JlsQ';
+
+      const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/maheer-maps/cm7wgptns00qa01sda42v6fqo',
+        center: [-0.1276, 51.5072], // Center of London
+        zoom: 10.7
+      });
+
+      // Add the event listener for clicking on any Mapbox pins/layers
+      map.on('load', function () {
+        map.on('click', 'layer-id', function (e) {
+          const properties = e.features[0].properties;
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`
+              <h3>${properties.name || 'Unknown Name'}</h3>
+              <p><strong>Layer:</strong> ${properties.layerName || 'Unknown Layer'}</p>
+            `)
+            .addTo(map);
+        });
+
+        map.on('mouseenter', 'layer-id', function () {
+          map.getCanvas().style.cursor = 'pointer';
+        });
+
+        map.on('mouseleave', 'layer-id', function () {
+          map.getCanvas().style.cursor = '';
+        });
+      });
+    </script>
+  </body>
+</html>
