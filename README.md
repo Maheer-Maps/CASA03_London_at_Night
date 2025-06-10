@@ -1,15 +1,33 @@
-# Creative Commons and Usage Rights for "The City After Dark: Interactive Study of 24-hour London"
+# LONDON AT NIGHT
+**A 24-Hour City or Just a Late-Night Illusion?**  
 
-License: Creative Commons Attribution-NonCommercial-NoDerivatives (CC BY-NC-ND)
+[![Application Screenshot](Website.png)](https://maheer-maps.github.io/London_at_Night/)  
 
-This license allows others to download and share this work as long as proper credit is given, but it cannot be used for commercial purposes or modified in any way.
+---
 
-Project Summary
+### Context  
+| Category | Details |
+|----------|---------|
+| **University** | University College London (UCL) |
+| **Department** | Centre for Advanced Spatial Analysis (CASA) |
+| **Year** | 2024-2025 |
+| **Program** | MSc Urban Spatial Science |
+| **Module** | [CASA0003 Group Project – Digital Visualisation](https://www.ucl.ac.uk/module-catalogue/modules/group-mini-project-digital-visualisation-CASA0003) |
+| **Module Lead** | Duncan Smith |
+| **Module Credits** | 30 |
+| **Assessment** | Individual Submission |
+| **Assessment Weight** | 20% |
 
+---
+
+### 🌃 Project Overview  
 This study combines 24-hour alcohol licence data and geolocation data from OpenStreetMap to map London's continuously open establishments. By analyzing spatial and industry variations, it fills a crucial research gap in understanding the city's 24-hour economy.
 
-Creative Commons and Usage Rights
+**Live Application:** [Explore the Study](https://maheer-maps.github.io/London_at_Night/)  
 
-The content, data, and findings presented in this project are the intellectual property of the author(s) and are protected under copyright law. Any reproduction, distribution, adaptation, or use of this material, in part or whole, without explicit written permission from the author(s) is strictly prohibited. This study has been developed for research and educational purposes, and while it may inform further academic or policy work, its use must be properly credited, and authorization sought for any derivative works or external applications.
+---
 
-For permissions or inquiries regarding usage, please contact the project author(s) directly.
+### © Creative Commons License  
+This work is licensed under [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/).  
+
+For permissions beyond this license, please contact the project authors.
